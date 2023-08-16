@@ -27,5 +27,19 @@ router.post('/users', async (req, res) => {
   }
 });
 
+// Define a route handler for the '/tasks' route using HTTP GET method
+router.get('/users', async (req, res) => {
+  try {
+    // Retrieve all tasks from the database
+    const tasks = await User.find();
+
+    // Respond with the retrieved tasks
+    res.status(200).send(tasks);
+  } catch (error) {
+    // If an error occurs, respond with an error status and the error message
+    res.status(500).send(error);
+  }
+});
+
 // Export the router so it can be used in other parts of the application
 export default router;
